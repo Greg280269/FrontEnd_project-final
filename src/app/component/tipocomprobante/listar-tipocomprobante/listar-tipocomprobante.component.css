@@ -1,0 +1,28 @@
+.button-update {
+  background-color: #7ECECA;
+  color: white;
+}
+
+.button-delete {
+  background-color: #ce7eaf;
+  color: white;
+}
+
+.button-insert {
+  background-color: #7ECECA !important;
+  margin-bottom: 15px;
+  color: white !important;
+}
+
+.form-usuario {
+  padding: 40px;
+}
+
+.title-tipocomprobante-lista {
+  text-align: left;
+  font-family: Arial Black;
+  font-weight: bold;
+  font-size: 30px;
+  color: #7ECECA;
+  text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+}

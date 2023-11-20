@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="container" style="text-align: center">
+      <br />
+      <h2 class="title-locales-lista" style="text-align: center">Registro de Locales</h2>
+      <form [formGroup]="form" (submit)="aceptar()" class="form-local">
+        <br />
+        <mat-form-field class="example-full-width" *ngIf="edicion">
+          <mat-label>Codigo</mat-label>
+          <input matInput placeholder="id" formControlName="id" />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>Nombre</mat-label>
+          <input
+            matInput
+            required
+            placeholder="Por favor ingrese el nombre"
+            formControlName="nombre"
+            required
+          />
+          <mat-error
+            *ngIf="obtenerControlCampo('nombre')?.errors?.['required']"
+          >
+            El nombre es obligatorio.
+          </mat-error>
+          <mat-error *ngIf="obtenerControlCampo('nombre')?.errors?.['pattern']">
+            Nombre invalido
+          </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>Direccion</mat-label>
+          <input
+            matInput
+            required
+            placeholder="Por favor ingrese el direccion"
+            formControlName="direccion"
+            required
+          />
+          <mat-error
+            *ngIf="obtenerControlCampo('direccion')?.errors?.['required']"
+          >
+            La direccion es obligatoria.
+          </mat-error>
+          <mat-error *ngIf="obtenerControlCampo('direccion')?.errors?.['pattern']">
+            Direccion invalido
+          </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>Capacidad</mat-label>
+          <input
+            matInput
+            required
+            placeholder="Por favor ingrese la capacidad"
+            formControlName="capacidad"
+            required
+          />
+          <mat-error
+            *ngIf="obtenerControlCampo('capacidad')?.errors?.['required']"
+          >
+            La capacidad es obligatoria.
+          </mat-error>
+          <mat-error *ngIf="obtenerControlCampo('capacidad')?.errors?.['pattern']">
+            Capacidad invalido
+          </mat-error>
+          <mat-error *ngIf="obtenerControlCampo('capacidad')?.errors?.['max']">
+            Capacidad es mayor a 10 y menor a 10000 asistentes
+          </mat-error>
+          <mat-error *ngIf="obtenerControlCampo('capacidad')?.errors?.['min']">
+            Capacidad es mayor a 10 y menor a 10000 asistentes
+          </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>Usuario</mat-label>
+          <mat-select [(value)]="usuarioSeleccionado" required formControlName="users">
+            <mat-option *ngFor="let p of listaUsuario" [value]="p.id">
+              {{p.username}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="obtenerControlCampo('users')?.errors?.['required']">
+            El nivel de dificultad es obligatorio.
+          </mat-error>
+        </mat-form-field>
+        <br />
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Servicio</mat-label>
+          <mat-select [(value)]="servicioSeleccionado" required formControlName="servicios">
+            <mat-option *ngFor="let p of listaServicio" [value]="p.id">
+              {{p.nombre}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="obtenerControlCampo('servicios')?.errors?.['required']">
+            El nivel de dificultad es obligatorio.
+          </mat-error>
+        </mat-form-field>
+        <br />
+        <button mat-raised-button color="primary" class="button-aceptar"><span class="material-icons">check</span></button>
+        <button
+          mat-raised-button
+          color="warn"
+          routerLink="/components/locales"
+          class="button-cancelar"
+        >
+        <span class="material-icons">cancel</span>
+        </button>
+        <p>{{ mensaje }}</p>
+      </form>
+    </div>
+  </body>
+
+</html>

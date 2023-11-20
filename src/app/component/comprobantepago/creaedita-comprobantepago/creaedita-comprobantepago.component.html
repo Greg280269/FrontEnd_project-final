@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container" style="text-align: center;">
+    <br />
+    <h2 class="title-comprobantepago-lista" style="text-align: center" >Registro de Comprobante de Pago</h2>
+    <form [formGroup]="form" (submit)="Aceptar()" class="example-form">
+      <br />
+      <mat-form-field class="example-full-width" *ngIf="edicion">
+        <mat-label>Id</mat-label>
+        <input matInput placeholder="Id" formControlName="id" />
+      </mat-form-field>
+      <br />
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Monto</mat-label>
+        <input matInput placeholder="Monto" formControlName="monto" />
+        <mat-error *ngIf="obtenerControlCampo('monto')?.errors?.['required']">
+          El monto es obligatorio.
+        </mat-error>
+        <mat-error *ngIf="obtenerControlCampo('monto')?.errors?.['pattern']">
+          Monto invalido
+        </mat-error>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field appearance="fill" class="example-full-width">
+        <input matInput placeholder="Ingrese fecha" [matDatepicker]="picker" formControlName="fecha" [max]="maxFecha" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="obtenerControlCampo('fecha')?.errors?.['required']">
+          La fecha es obligatorio.
+        </mat-error>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Metodo</mat-label>
+        <input matInput placeholder="Metodo" formControlName="metodo" />
+        <mat-error *ngIf="obtenerControlCampo('metodo')?.errors?.['required']">
+          El metodo es obligatorio.
+        </mat-error>
+        <mat-error *ngIf="obtenerControlCampo('metodo')?.errors?.['pattern']">
+          Metodo invalido
+        </mat-error>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field class="example-full-width">
+        <mat-label>RUC</mat-label>
+        <input matInput placeholder="RUC" formControlName="ruc" />
+        <mat-error *ngIf="obtenerControlCampo('ruc')?.errors?.['required']">
+          El RUC es obligatorio.
+        </mat-error>
+        <mat-error *ngIf="obtenerControlCampo('ruc')?.errors?.['required']">
+          El campo RUC es obligatoria.
+        </mat-error>
+        <mat-error *ngIf="obtenerControlCampo('ruc')?.errors?.['pattern']">
+          RUC invalido
+        </mat-error>
+        <mat-error *ngIf="obtenerControlCampo('ruc')?.errors?.['maxLength']">
+          RUC es mayor a 10 y menor a 1000 asistentes
+        </mat-error>
+        <mat-error *ngIf="obtenerControlCampo('ruc')?.errors?.['minLength']">
+          RUC es mayor a 10 y menor a 1000 asistentes
+        </mat-error>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field class="example-full-width">
+        <mat-label>IGV</mat-label>
+        <input matInput placeholder="IGV" formControlName="igv" />
+        <mat-error *ngIf="obtenerControlCampo('igv')?.errors?.['required']">
+          El IGV es obligatorio.
+        </mat-error>
+        <mat-error *ngIf="obtenerControlCampo('igv')?.errors?.['pattern']">
+          IGV invalido
+        </mat-error>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Tipo de Comprobante</mat-label>
+        <mat-select [(value)]="idTipoComprobanteSeleccionado" required formControlName="tipo">
+          <mat-option *ngFor="let p of listaTipoComprobante" [value]="p.id">
+            {{p.nombre}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="obtenerControlCampo('tipo')?.errors?.['required']">
+          El nivel de dificultad es obligatorio.
+        </mat-error>
+      </mat-form-field>
+      <br>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Evento</mat-label>
+        <mat-select [(value)]="idEventoSeleccionado" required formControlName="eventos">
+          <mat-option *ngFor="let p of listaEvento" [value]="p.id">
+            {{p.nombre}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="obtenerControlCampo('eventos')?.errors?.['required']">
+          El nivel de dificultad es obligatorio.
+        </mat-error>
+      </mat-form-field>
+      <br>
+
+      <button mat-raised-button color="primary" class="button-aceptar"><span class="material-icons">check</span></button>
+        <button
+          mat-raised-button
+          color="warn"
+          routerLink="/components/comprobantePago"
+          class="button-cancelar"
+        >
+        <span class="material-icons">cancel</span>
+        </button>
+      <p>{{ mensaje }}</p>
+    </form>
+  </div>
+</body>
+
+</html>

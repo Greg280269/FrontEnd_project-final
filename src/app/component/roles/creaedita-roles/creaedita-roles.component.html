@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container" style="text-align: center">
+      <br />
+        <h2 class="title-roles-lista" style="text-align: center">Registro de Roles</h2>
+        <form [formGroup]="form" (submit)="Aceptar()" class="example-form">
+            <mat-form-field class="example-full-width" *ngIf="edicion">
+                <mat-label>Id</mat-label>
+                <input matInput placeholder="Id" formControlName="id" />
+            </mat-form-field>
+            <br />
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Roles
+                </mat-label>
+                <mat-select formControlName="rol">
+                  <mat-option *ngFor="let p of roles" [value]="p.value">
+                    {{p.viewValue}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="obtenerControlCampo('rol')?.errors?.['required']">
+                  El rol es obligatorio.
+                </mat-error>
+            </mat-form-field>
+            <br/>
+
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Usuario</mat-label>
+                <mat-select [(value)]="idPersonaSeleccionada" formControlName="person">
+                    <mat-option *ngFor="let p of listaPersonas" [value]="p.id">
+                        {{p.username}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="obtenerControlCampo('person')?.errors?.['required']">
+                    El nivel de dificultad es obligatorio.
+                </mat-error>
+            </mat-form-field>
+            <br>
+
+            <button mat-raised-button color="primary" class="button-aceptar"><span class="material-icons">check</span></button>
+        <button
+          mat-raised-button
+          color="warn"
+          routerLink="/components/roles"
+          class="button-cancelar"
+        >
+        <span class="material-icons">cancel</span>
+        </button>
+            <p>{{ mensaje }}</p>
+        </form>
+    </div>
+</body>
+
+</html>

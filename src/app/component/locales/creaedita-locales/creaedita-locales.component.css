@@ -1,0 +1,28 @@
+.example-form {
+  min-width: 100;
+  max-width: 400;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 75%;
+}
+
+.button-aceptar {
+  background-color: #7ECECA;
+  color: white;
+}
+
+.button-cancelar {
+  background-color: #ce7eaf;
+  color: white;
+}
+
+.title-locales-lista {
+  text-align: left;
+  font-family: Arial Black;
+  font-weight: bold;
+  font-size: 30px;
+  color: #7ECECA;
+  text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+}

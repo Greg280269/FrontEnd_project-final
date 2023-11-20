@@ -1,0 +1,7 @@
+.menu {
+    background-color: #7ECECA;
+    color: white;
+  }
+  .salir-button {
+    margin-left: auto; /* Esto colocará el botón al final de la barra de herramientas */
+  }

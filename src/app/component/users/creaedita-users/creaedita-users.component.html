@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container" style="text-align: center;">
+      <br />
+        <h2 class="title-users-lista" style="text-align: center">Registro de Usuario</h2>
+        <form [formGroup]="form" (submit)="Aceptar()" class="example-form">
+          <br />
+            <mat-form-field class="example-full-width" *ngIf="edicion">
+                <mat-label>id</mat-label>
+                <input matInput placeholder="Id" formControlName="id" />
+            </mat-form-field>
+            <br />
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Username</mat-label>
+                <input matInput placeholder="username" formControlName="username" />
+                <mat-error *ngIf="obtenerControlCampo('username')?.errors?.['required']">
+                  El usuario es obligatorio.
+                </mat-error>
+            </mat-form-field>
+            <br />
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Contraseña</mat-label>
+                <input matInput placeholder="password" formControlName="password" />
+                <mat-error *ngIf="obtenerControlCampo('password')?.errors?.['required']">
+                    La Contraseña es obligatoria.
+                </mat-error>
+            </mat-form-field>
+            <br />
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Apellido</mat-label>
+                <input matInput placeholder="apellido" formControlName="apellido" />
+                <mat-error *ngIf="obtenerControlCampo('apellido')?.errors?.['required']">
+                    El apellido es obligatorio.
+                </mat-error>
+                <mat-error *ngIf="obtenerControlCampo('apellido')?.errors?.['pattern']">
+                  Apellido invalido.
+              </mat-error>
+            </mat-form-field>
+            <br />
+
+            <mat-form-field class="example-full-width">
+                <mat-label>DNI</mat-label>
+                <input matInput placeholder="dni" formControlName="dni" />
+                <mat-error *ngIf="obtenerControlCampo('dni')?.errors?.['required']">
+                    El dni es obligatorio.
+                </mat-error>
+                <mat-error *ngIf="obtenerControlCampo('dni')?.errors?.['maxLength']">
+                  El telefono es de 8 digitos.
+                </mat-error>
+                <mat-error *ngIf="obtenerControlCampo('dni')?.errors?.['minLength']">
+                  El telefono es de 8 digitos.
+                </mat-error>
+                <mat-error *ngIf="obtenerControlCampo('dni')?.errors?.['pattern']">
+                  Dni invalido.
+              </mat-error>
+            </mat-form-field>
+            <br />
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Correo</mat-label>
+                <input matInput placeholder="email" formControlName="email" />
+                <mat-error *ngIf="obtenerControlCampo('email')?.errors?.['required']">
+                    El correo es obligatorio.
+                </mat-error>
+                <mat-error *ngIf="obtenerControlCampo('email')?.errors?.['email']">
+                 Correo invalido.
+              </mat-error>
+
+            </mat-form-field>
+            <br />
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Telefono</mat-label>
+                <input matInput placeholder="telefono" formControlName="telefono" />
+                <mat-error *ngIf="obtenerControlCampo('telefono')?.errors?.['required']">
+                  El telefono es obligatorio.
+                </mat-error>
+                <mat-error *ngIf="obtenerControlCampo('telefono')?.errors?.['minLength']">
+                  El telefono es de 9 digitos.
+                </mat-error>
+                <mat-error *ngIf="obtenerControlCampo('telefono')?.errors?.['maxLength']">
+                  El telefono es de 9 digitos.
+                </mat-error>
+                <mat-error *ngIf="obtenerControlCampo('telefono')?.errors?.['pattern']">
+                  telefono invalido.
+              </mat-error>
+            </mat-form-field>
+            <br />
+
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Disponibilidad
+                </mat-label>
+                <mat-select formControlName="enabled">
+                  <mat-option *ngFor="let p of disponibilidades" [value]="p.value">
+                    {{p.viewValue}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="obtenerControlCampo('enabled')?.errors?.['required']">
+                  La disponibilidad es obligatorio.
+                </mat-error>
+            </mat-form-field>
+            <br/>
+
+
+
+            <button mat-raised-button color="primary" class="button-aceptar"><span class="material-icons">check</span></button>
+        <button
+          mat-raised-button
+          color="warn"
+          routerLink="/components/users"
+          class="button-cancelar"
+        >
+        <span class="material-icons">cancel</span>
+        </button>
+            <p>{{ mensaje }}</p>
+        </form>
+    </div>
+</body>
+
+</html>
+

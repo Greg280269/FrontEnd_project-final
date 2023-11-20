@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container" style="text-align: center;">
+      <br />
+        <h2 class="title-servicios-lista" style="text-align: center">Registro de Servicios</h2>
+        <form [formGroup]="form" (submit)="Aceptar()" class="example-form">
+          <br />
+            <mat-form-field class="example-full-width" *ngIf="edicion">
+                <mat-label>Id</mat-label>
+                <input matInput placeholder="Id" formControlName="id" />
+            </mat-form-field>
+            <br />
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Nombre</mat-label>
+                <input matInput placeholder="Nombre" formControlName="nombre" />
+                <mat-error *ngIf="obtenerControlCampo('nombre')?.errors?.['required']">
+                    El nombre es obligatorio.
+                </mat-error>
+                <mat-error *ngIf="obtenerControlCampo('nombre')?.errors?.['pattern']">
+                  Nombre invalido
+              </mat-error>
+
+            </mat-form-field>
+            <br />
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Descripcion</mat-label>
+                <input matInput placeholder="Descripcion" formControlName="descripcion" />
+                <mat-error *ngIf="obtenerControlCampo('descripcion')?.errors?.['required']">
+                    El nombre es obligatorio.
+                </mat-error>
+                <mat-error *ngIf="obtenerControlCampo('descripcion')?.errors?.['pattern']">
+                  Descripcion invalida
+              </mat-error>
+            </mat-form-field>
+            <br />
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Disponibilidad
+                </mat-label>
+                <mat-select formControlName="estado">
+                  <mat-option *ngFor="let p of disponibilidades" [value]="p.value">
+                    {{p.viewValue}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="obtenerControlCampo('estado')?.errors?.['required']">
+                  La disponibilidad es obligatorio.
+                </mat-error>
+            </mat-form-field>
+            <br/>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Costo</mat-label>
+                <input matInput placeholder="Costo" formControlName="costo" />
+                <mat-error *ngIf="obtenerControlCampo('costo')?.errors?.['required']">
+                    El costo es obligatorio.
+                </mat-error>
+                <mat-error *ngIf="obtenerControlCampo('costo')?.errors?.['pattern']">
+                  Costo invalido
+              </mat-error>
+            </mat-form-field>
+            <br />
+
+
+
+
+
+            <button mat-raised-button color="primary" class="button-aceptar"><span class="material-icons">check</span></button>
+        <button
+          mat-raised-button
+          color="warn"
+          routerLink="/components/servicios"
+          class="button-cancelar"
+        >
+        <span class="material-icons">cancel</span>
+        </button>
+            <p>{{ mensaje }}</p>
+        </form>
+    </div>
+</body>
+
+</html>
+

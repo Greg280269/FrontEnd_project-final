@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container" style="text-align: center;">
+      <br />
+        <h2 class="title-tipocomprobante-lista" style="text-align: center">Registro de Tipo Comprobantes</h2>
+        <form [formGroup]="form" (submit)="Aceptar()" class="example-form">
+          <br />
+            <mat-form-field class="example-full-width" *ngIf="edicion">
+                <mat-label>id</mat-label>
+                <input matInput placeholder="Id" formControlName="id" />
+            </mat-form-field>
+            <br />
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Nombre</mat-label>
+                <input matInput placeholder="Nombre" formControlName="nombre" />
+                <mat-error *ngIf="obtenerControlCampo('nombre')?.errors?.['required']">
+                    El nombre es obligatorio.
+                </mat-error>
+                <mat-error *ngIf="obtenerControlCampo('nombre')?.errors?.['pattern']">
+                  Ingrese nombre valido.
+              </mat-error>
+            </mat-form-field>
+            <br />
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Descripcion</mat-label>
+                <input matInput placeholder="Descripcion" formControlName="descripcion" />
+                <mat-error *ngIf="obtenerControlCampo('descripcion')?.errors?.['required']">
+                  Descripcion es obligatoria.
+                </mat-error>
+                <mat-error *ngIf="obtenerControlCampo('descripcion')?.errors?.['pattern']">
+                  Ingrese descripcion valido.
+              </mat-error>
+            </mat-form-field>
+            <br />
+            <button mat-raised-button color="primary" class="button-aceptar"><span class="material-icons">check</span></button>
+        <button
+          mat-raised-button
+          color="warn"
+          routerLink="/components/tipoComprobante"
+          class="button-cancelar"
+        >
+        <span class="material-icons">cancel</span>
+        </button>
+            <p>{{ mensaje }}</p>
+        </form>
+    </div>
+</body>
+
+</html>

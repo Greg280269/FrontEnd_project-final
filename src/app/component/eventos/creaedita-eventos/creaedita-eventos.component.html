@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container" style="text-align: center;">
+      <br />
+        <h2 class="title-eventos-lista" style="text-align: center" >Registro de Eventos</h2>
+        <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+          <br />
+            <mat-form-field class="example-full-width" *ngIf="edicion">
+                <mat-label>id</mat-label>
+                <input matInput placeholder="Id" formControlName="id" />
+            </mat-form-field>
+            <br />
+            <mat-form-field class="example-full-width">
+              <mat-label>Nombre</mat-label>
+              <input matInput required placeholder="Por favor ingrese el contenido"  formControlName="nombre" required>
+              <mat-error *ngIf="obtenerControlCampo('nombre')?.errors?.['required']">
+                El Nombre costo es obligatorio.
+              </mat-error>
+              <mat-error *ngIf="obtenerControlCampo('nombre')?.errors?.['pattern']">
+                Nombre invalido
+              </mat-error>
+            </mat-form-field>
+            <br />
+            <mat-form-field class="example-full-width">
+              <mat-label>Descripcion</mat-label>
+              <input matInput required placeholder="Por favor ingrese el contenido" formControlName="descripcion" required>
+              <mat-error *ngIf="obtenerControlCampo('descripcion')?.errors?.['required']">
+                El Descripcion costo es obligatorio.
+              </mat-error>
+              <mat-error *ngIf="obtenerControlCampo('descripcion')?.errors?.['pattern']">
+                Descripcion invalido
+              </mat-error>
+            </mat-form-field>
+            <br />
+            <mat-form-field appearance="fill" class="example-full-width">
+              <input
+                matInput
+                placeholder="Ingrese fecha"
+                [matDatepicker]="picker"
+                formControlName="fecha"
+                [max]="maxFecha"
+              />
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error
+                *ngIf="obtenerControlCampo('fecha')?.errors?.['required']"
+              >
+              </mat-error>
+            </mat-form-field>
+            <br />
+            <mat-form-field class="example-full-width">
+              <mat-label>Capacidad</mat-label>
+              <input matInput required placeholder="Por favor ingrese el contenido" formControlName="capacidad" required>
+              <mat-error *ngIf="obtenerControlCampo('capacidad')?.errors?.['required']">
+                El campo Capacidad es obligatoria.
+              </mat-error>
+              <mat-error *ngIf="obtenerControlCampo('capacidad')?.errors?.['pattern']">
+                Capacidad invalido
+              </mat-error>
+              <mat-error *ngIf="obtenerControlCampo('capacidad')?.errors?.['max']">
+                Capacidad es mayor a 10 y menor a 1000 asistentes
+              </mat-error>
+              <mat-error *ngIf="obtenerControlCampo('capacidad')?.errors?.['min']">
+                Capacidad es mayor a 10 y menor a 1000 asistentes
+              </mat-error>
+            </mat-form-field>
+            <br />
+            <mat-form-field class="example-full-width">
+              <mat-label>Costo</mat-label>
+              <input matInput required placeholder="Por favor ingrese el contenido" formControlName="costo" required>
+              <mat-error *ngIf="obtenerControlCampo('costo')?.errors?.['required']">
+                El campo costo es obligatorio.
+              </mat-error>
+              <mat-error *ngIf="obtenerControlCampo('costo')?.errors?.['pattern']">
+                Costo invalido
+              </mat-error>
+            </mat-form-field>
+            <br />
+            <mat-form-field class="example-full-width">
+              <mat-label>Usuario</mat-label>
+              <mat-select [(value)]="usuarioSeleccionado" required formControlName="users">
+                <mat-option *ngFor="let p of listaUsuario" [value]="p.id">
+                  {{p.username}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="obtenerControlCampo('users')?.errors?.['required']">
+                El nivel de dificultad es obligatorio.
+              </mat-error>
+            </mat-form-field>
+            <br>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Local</mat-label>
+              <mat-select [(value)]="localSeleccionado" required formControlName="locales">
+                <mat-option *ngFor="let p of listaLocal" [value]="p.id">
+                  {{p.direccion}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="obtenerControlCampo('locales')?.errors?.['required']">
+                El nivel de dificultad es obligatorio.
+              </mat-error>
+            </mat-form-field>
+            <br>
+            <button mat-raised-button color="primary" class="button-aceptar"><span class="material-icons">check</span></button>
+        <button
+          mat-raised-button
+          color="warn"
+          routerLink="/components/eventos"
+          class="button-cancelar"
+        >
+        <span class="material-icons">cancel</span>
+        </button>
+            <p>{{ mensaje }}</p>
+        </form>
+    </div>
+</body>
+
+</html>

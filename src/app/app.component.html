@@ -1,0 +1,82 @@
+<mat-toolbar color="primary" *ngIf="verificar()" class="menu">
+  <button mat-button [matMenuTriggerFor]="menuComentarios"><mat-icon>comment</mat-icon>
+    <span>Comentarios</span></button>
+  <button mat-button [matMenuTriggerFor]="menuComprobantePago"><mat-icon>receipt</mat-icon>
+    <span>Comprobante Pago</span></button>
+  <button mat-button [matMenuTriggerFor]="menuEventos"><mat-icon>event</mat-icon>
+    <span>Eventos</span></button>
+  <button mat-button [matMenuTriggerFor]="menuULocales"><mat-icon>store</mat-icon>
+    <span>Locales</span></button>
+  <button mat-button [matMenuTriggerFor]="menuRoles"><mat-icon>supervisor_account</mat-icon>
+    <span>Roles</span></button>
+  <button mat-button [matMenuTriggerFor]="menuServicios"><mat-icon>room_service</mat-icon>
+    <span>Servicios</span></button>
+  <button mat-button [matMenuTriggerFor]="menuTipoComprobante"><mat-icon>description</mat-icon>
+    <span>Tipo Comprobante</span></button>
+  <button mat-button [matMenuTriggerFor]="menuUsers"><mat-icon>person</mat-icon>
+    <span>Usuarios</span></button>
+  <button mat-button [matMenuTriggerFor]="menuReporte"><mat-icon>insert_chart_outlined</mat-icon>
+    <span>Reportes</span></button>
+  <button mat-button [matMenuTriggerFor]="menuSalir" class="salir-button"><mat-icon>exit_to_app</mat-icon>
+    <span>Salir</span></button>
+</mat-toolbar>
+
+<mat-menu #menuComentarios="matMenu">
+  <button mat-menu-item routerLink="components/comentarios/nuevo" >Registrar</button>
+  <button mat-menu-item routerLink="components/comentarios">Listar</button>
+</mat-menu>
+
+<mat-menu #menuComprobantePago="matMenu">
+  <button mat-menu-item routerLink="components/comprobantePago/nuevo" >Registrar</button>
+  <button mat-menu-item routerLink="components/comprobantePago">Listar</button>
+</mat-menu>
+
+<mat-menu #menuEventos="matMenu">
+  <button mat-menu-item routerLink="components/eventos/nuevo">Registrar</button>
+  <button mat-menu-item routerLink="components/eventos">Listar</button>
+</mat-menu>
+
+<mat-menu #menuULocales="matMenu">
+  <button mat-menu-item routerLink="components/locales/nuevo">Registrar</button>
+  <button mat-menu-item routerLink="components/locales">Listar</button>
+</mat-menu>
+
+<mat-menu #menuRoles="matMenu">
+  <button mat-menu-item routerLink="components/roles/nuevo">Registrar</button>
+  <button mat-menu-item routerLink="components/roles">Listar</button>
+</mat-menu>
+
+<mat-menu #menuServicios="matMenu">
+  <button mat-menu-item routerLink="components/servicios/nuevo">Registrar</button>
+  <button mat-menu-item routerLink="components/servicios">Listar</button>
+</mat-menu>
+
+<mat-menu #menuTipoComprobante="matMenu">
+  <button mat-menu-item routerLink="components/tipoComprobante/nuevo">Registrar</button>
+  <button mat-menu-item routerLink="components/tipoComprobante">Listar</button>
+</mat-menu>
+
+<mat-menu #menuUsers="matMenu">
+  <button mat-menu-item routerLink="components/users/nuevo">Registrar</button>
+  <button mat-menu-item routerLink="components/users">Listar</button>
+</mat-menu>
+
+<mat-menu #menuReporte="matMenu">
+  <button mat-menu-item routerLink="components/reportes">Reporte01</button>
+  <button mat-menu-item routerLink="components/reportes/reporte02">Reporte02</button>
+</mat-menu>
+
+
+<mat-menu #menuSalir="matMenu">
+  <button mat-menu-item routerLink="/login" (click)="cerrar()">
+    <mat-icon>logout</mat-icon>
+    <span>Cerrar sesión</span>
+  </button>
+  <button mat-menu-item>
+    Rol:
+    <span>{{ role }}</span>
+  </button>
+  <!-- Agrega más elementos de menú si es necesario -->
+</mat-menu>
+
+<router-outlet></router-outlet>
