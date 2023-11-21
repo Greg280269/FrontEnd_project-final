@@ -38,9 +38,9 @@ export class CreaeditaUsersComponent implements OnInit{
 
     this.form=this.formBuilder.group({
       id:['',],
-      dni:['',[Validators.required, Validators.minLength(8),Validators.maxLength(8),Validators.pattern(/^[0-9]+$/)]],
+      dni:['',[Validators.required, Validators.minLength(8),Validators.maxLength(8),Validators.pattern(/^[a-zA-Z0-9\s]+$/)]],
       username:['',Validators.required],
-      apellido:['',[Validators.required,Validators.pattern(/^[a-zA-Z]+$/)]],
+      apellido:['',[Validators.required,Validators.pattern(/^[a-zA-Z0-9\s]+$/)]],
       email:['', [Validators.required, Validators.email]],
       telefono:['',[Validators.required, Validators.minLength(9),Validators.maxLength(9),Validators.pattern(/^[0-9]+$/)]],
       enabled:['',Validators.required],

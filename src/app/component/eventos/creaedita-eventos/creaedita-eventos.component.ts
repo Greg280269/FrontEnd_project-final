@@ -51,8 +51,8 @@ export class CreaeditaEventosComponent implements OnInit {
     });
     this.form = this.formBuilder.group({
       id: ['',],
-      nombre: ['', [Validators.required,Validators.pattern(/^[a-zA-Z]+$/)]],
-      descripcion: ['', [Validators.required,Validators.pattern(/^[a-zA-Z]+$/)]],
+      nombre: ['', [Validators.required,Validators.pattern(/^[a-zA-Z0-9\s]+$/)]],
+      descripcion: ['', [Validators.required,Validators.pattern(/^[a-zA-Z0-9\s]+$/)]],
       fecha: ['', Validators.required],
       capacidad: ['', [Validators.required,Validators.pattern(/^[0-9]+$/),Validators.min(10),Validators.max(1000)]],
       costo: ['', [Validators.required,Validators.pattern(/^\d+(\.\d{1,2})?$/)]],

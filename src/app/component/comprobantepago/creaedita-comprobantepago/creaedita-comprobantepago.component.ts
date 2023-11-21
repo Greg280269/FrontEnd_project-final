@@ -50,7 +50,7 @@ export class CreaeditaComprobantepagoComponent implements OnInit{
       id:['',],
       monto:['',[Validators.required,Validators.pattern(/^[0-9]+$/)]],
       fecha:['',Validators.required],
-      metodo:['',[Validators.required,Validators.pattern(/^[a-zA-Z]+$/)]],
+      metodo:['',[Validators.required,Validators.pattern(/^[a-zA-Z0-9\s]+$/)]],
       ruc:['',[Validators.required,Validators.pattern(/^[0-9]+$/),Validators.minLength(10),,Validators.maxLength(10)]],
       igv:['',[Validators.required,Validators.pattern(/^[0-9]+$/)]],
       tipo:['',Validators.required],

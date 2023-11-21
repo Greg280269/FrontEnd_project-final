@@ -53,7 +53,7 @@ export class CreaeditaComentariosComponent implements OnInit{
     this.form=this.formBuilder.group({
       id: ['',],
       valoracion: ['', Validators.required],
-      contenido: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9]+$/)]],
+      contenido: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9\s]+$/)]],
       users: ['', Validators.required],
       eventos: ['', Validators.required],
 

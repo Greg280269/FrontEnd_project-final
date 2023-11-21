@@ -32,8 +32,8 @@ export class CreaeditaTipocomprobanteComponent implements OnInit{
 
     this.form=this.formBuilder.group({
       id:['',],
-      nombre:['',[Validators.required,Validators.pattern(/^[a-zA-Z]+$/)]],
-      descripcion:['',[Validators.required,Validators.pattern(/^[a-zA-Z]+$/)]],
+      nombre:['',[Validators.required,Validators.pattern(/^[a-zA-Z0-9\s]+$/)]],
+      descripcion:['',[Validators.required,Validators.pattern(/^^[a-zA-Z0-9\s]+$/)]],
 
     });
   }
